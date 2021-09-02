@@ -13,7 +13,8 @@
 // document.querySelector('.guess').value = 23;
 // console.log(document.querySelector('.guess').value);
 
-const secretNumber = Math.trunc(Math.random() * 20 + 1);
+let secretNumber = Math.trunc(Math.random() * 20 + 1);
+console.log(`initial num : ${secretNumber}`);
 
 let scoreValue = 20;
 
@@ -29,7 +30,8 @@ document.querySelector('.check').addEventListener('click', function () {
   }
   //when the player wins
   else if (guessNumber === secretNumber) {
-    document.querySelector('.message').textContent = 'Correct Number!';
+    document.querySelector('.message').textContent =
+      'Bulls eye 🐂, nailed it!!!';
     //displaying the correctnumber when the player wins
     document.querySelector('.number').textContent = secretNumber;
 
@@ -38,7 +40,7 @@ document.querySelector('.check').addEventListener('click', function () {
     //increasing the width of the main number
     document.querySelector('.number').style.width = '30rem';
   }
-  //when the input is higher than the number
+  //when the input is higher than  the number
   else if (guessNumber > secretNumber) {
     if (scoreValue > 1) {
       document.querySelector('.message').textContent = 'Too High📈';
@@ -61,16 +63,18 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
 });
-//note: eventlistner for Check button end========================
+//note: eventlistner for Check button end ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 //note: eventlistner for again button start========================
 //task:
-// -- on click of again button following should happen---------
+// -------- on click of again button following should happen---------
 //     a) The background color of the screen should go back to the initial color : done
 //     b) Correct number should dissaper and "?" should be there : done
 //     c)reset the correct number message back to start guessing : done
 //     d)reset score : done
 //     e)empty out the input field : done
+//     f) restore the width of the secretNumber element back to 15rem : done
+//     g) new secrete number : done
 
 document.querySelector('.again').addEventListener('click', function () {
   scoreValue = 20;
@@ -80,5 +84,10 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.number').textContent = '?';
   document.querySelector('.message').textContent = 'start guessing...';
   document.querySelector('.guess').value = null;
+  document.querySelector('.number').style.width = '15rem';
+  secretNumber = Math.trunc(Math.random() * 20 + 1);
+  console.log(`new num : ${secretNumber}`);
 });
-//note: eventlistner for again button end========================
+//note: eventlistner for again button end^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+console.log(secretNumber);
