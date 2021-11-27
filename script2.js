@@ -11,9 +11,10 @@ console.log(document.querySelector('.guess').value);
 */
 
 //defining variables
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let gameScore = 20;
 document.querySelector('.number').textContent = secretNumber;
+
 //============ Check Button Event handler start======================
 document.querySelector('.check').addEventListener('click', function () {
   // saving the input as a number
@@ -51,9 +52,38 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = 'You lost😒👎';
       document.querySelector('.score').textContent = 0;
     }
-  } //game won condition
+  } //Player wins
   else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Bulls Eye🎯!!!';
+
+    //changing the background color
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    //changing the width
+    document.querySelector('.number').style.width = '30rem';
   }
 });
 //============ Check Button Event handler end======================
+
+//============ Again Button Event handler start======================
+/* todo: on click :
+ --start guessing message 
+ -- score value reset to 20
+ -- empty input field 
+ -- width reset if game won 
+ -- background color reset if game won
+ -- reset secrete number 
+*/
+document.querySelector('.again').addEventListener('click', function () {
+  gameScore = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.score').textContent = gameScore;
+  document.querySelector('.number').textContent = secretNumber;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.guess').value = '';
+
+  document.querySelector('body').style.backgroundColor = '#222';
+
+  document.querySelector('.number').style.width = '15rem';
+});
+
+//============ Again Button Event handler end======================
