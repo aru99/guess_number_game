@@ -13,6 +13,7 @@ console.log(document.querySelector('.guess').value);
 //defining variables
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let gameScore = 20;
+let highScore = 0;
 document.querySelector('.number').textContent = secretNumber;
 
 //============ Check Button Event handler start======================
@@ -60,6 +61,12 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('body').style.backgroundColor = '#60b347';
     //changing the width
     document.querySelector('.number').style.width = '30rem';
+
+    //highsore functionality
+    if (gameScore > highScore) {
+      highScore = gameScore;
+      document.querySelector('.highscore').textContent = highScore;
+    }
   }
 });
 //============ Check Button Event handler end======================
