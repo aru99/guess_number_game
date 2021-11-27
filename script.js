@@ -91,3 +91,4 @@ document.querySelector('.again').addEventListener('click', function () {
 //note: eventlistner for again button end^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 console.log(secretNumber);
+ 
