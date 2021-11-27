@@ -12,7 +12,7 @@ console.log(document.querySelector('.guess').value);
 
 //defining variables
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
+let gameScore = 20;
 document.querySelector('.number').textContent = secretNumber;
 //============ Check Button Event handler start======================
 document.querySelector('.check').addEventListener('click', function () {
@@ -20,17 +20,37 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
   //checking for various senarios for the input number
+  //no INout given
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No Number Provided';
-  } else if (guess < secretNumber) {
-    document.querySelector('.message').textContent = 'Too low 📉';
-    score--;
-    document.querySelector('.score').textContent = score;
-  } else if (guess > secretNumber) {
-    document.querySelector('.message').textContent = 'Too high 📉';
-    score--;
-    document.querySelector('.score').textContent = score;
-  } else if (guess === secretNumber) {
+  } // input less than the secrete number
+  else if (guess < secretNumber) {
+    //checking score status
+    if (gameScore > 0) {
+      document.querySelector('.message').textContent = 'Too low 📉';
+      //reducing score for wrong guess
+      gameScore--;
+      //updating new game score
+      document.querySelector('.score').textContent = gameScore;
+    } //Game lost condition
+    else if (gameScore === 0) {
+      document.querySelector('.message').textContent = 'You lost😒👎';
+    }
+  } //input higher than the Secrete number
+  else if (guess > secretNumber) {
+    //checking game status
+    if (gameScore > 0) {
+      document.querySelector('.message').textContent = 'Too high 📉';
+      //reducing score for wrong guess
+      gameScore--;
+      //updating new game score
+      document.querySelector('.score').textContent = gameScore;
+    } //game lost condition
+    else if (gameScore === 0) {
+      document.querySelector('.message').textContent = 'You lost😒👎';
+    }
+  } //game won condition
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Bulls Eye🎯!!!';
   }
 });
