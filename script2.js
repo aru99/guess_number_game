@@ -26,28 +26,30 @@ document.querySelector('.check').addEventListener('click', function () {
   } // input less than the secrete number
   else if (guess < secretNumber) {
     //checking score status
-    if (gameScore > 0) {
+    if (gameScore > 1) {
       document.querySelector('.message').textContent = 'Too low 📉';
       //reducing score for wrong guess
       gameScore--;
       //updating new game score
       document.querySelector('.score').textContent = gameScore;
     } //Game lost condition
-    else if (gameScore === 0) {
+    else if (gameScore === 1) {
       document.querySelector('.message').textContent = 'You lost😒👎';
+      document.querySelector('.score').textContent = 0;
     }
   } //input higher than the Secrete number
   else if (guess > secretNumber) {
     //checking game status
-    if (gameScore > 0) {
-      document.querySelector('.message').textContent = 'Too high 📉';
+    if (gameScore > 1) {
+      document.querySelector('.message').textContent = 'Too high 📈';
       //reducing score for wrong guess
       gameScore--;
       //updating new game score
       document.querySelector('.score').textContent = gameScore;
     } //game lost condition
-    else if (gameScore === 0) {
+    else if (gameScore === 1) {
       document.querySelector('.message').textContent = 'You lost😒👎';
+      document.querySelector('.score').textContent = 0;
     }
   } //game won condition
   else if (guess === secretNumber) {
